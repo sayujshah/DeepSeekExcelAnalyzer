@@ -1,5 +1,5 @@
 import gradio as gr
-from ExcelAnalyzer import ExcelAnalyzer
+from Scripts.ExcelAnalyzer import ExcelAnalyzer
 
 DEFAULT_MODEL = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
 
