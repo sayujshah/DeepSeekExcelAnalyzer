@@ -2,7 +2,7 @@
 
 ## Overview
 
-This LLM-based chatbot is an intelligent AI-powered application that allows users to interact with Excel files using natural language questions. The bot is designed to run completely locally with the state-of-the-art DeepSeek R1 model or may take in an API key for another model of your choice if you wish.
+This LLM-based chatbot is an intelligent AI-powered application that allows users to interact with Excel files using natural language questions. The bot is designed to run completely locally with the state-of-the-art DeepSeek R1 model or may take in an API key for another model of your choice.
 
 ## Features
 
