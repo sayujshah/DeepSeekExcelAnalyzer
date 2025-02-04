@@ -16,7 +16,7 @@ class ExcelAnalyzer:
 
         # Initialize ChromaDB for RAG storage
         self.chromadb = chromadb.PersistentClient(path="chroma_db")
-        self.collection = self.chromadb.get_collection("excel_data")
+        self.collection = self.chromadb.get_or_create_collection("excel_data")
 
     def load_excel(self, file):
         """Load and validate Excel file"""
@@ -33,8 +33,8 @@ class ExcelAnalyzer:
             # Convert DataFrame to structured text
             texts = self.df.apply(lambda row: ', '.join(f"{col}: {row[col]}" for col in self.df.columns), axis=1).tolist()
             
-            uuid = self.collection.count()
             # Embed and store in ChromaDB
+            uuid = self.collection.count()
             for text in texts:
                 self.collection.add(
                     ids=[str(uuid)],
@@ -65,13 +65,16 @@ class ExcelAnalyzer:
             
             # Construct the context-enhanced prompt
             context = f"""
-            You are an expert data analyst. Analyze the relevant data below to answer the user's question. 
+            You are an expert data analyst. Analyze the Excel contents and relevant data below to answer the user's question. 
             Generate only the response to the user's question based on your analysis of the data.
 
-            ###RELEVANT DATA FROM EXCEL###
+            ### EXCEL DATA ###
+            {self.df}
+            
+            ### RELEVANT DATA ###
             {relevant_data}
             
-            ###QUESTION###
+            ### QUESTION ###
             {question}
             """
             
