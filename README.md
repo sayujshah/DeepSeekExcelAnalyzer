@@ -54,6 +54,8 @@ This will launch a Gradio web interface where you can:
 - Optionally configure the AI model and provide an API key
 - Optionally store the Excel file into the ChromaDB memory for future retrieval
 
+**NOTE:** You will only have a certain number of free requests you can make without a HF token set. In order to make unlimited requests, signup at huggingface.com, navigate to your "Access Tokens", and create a new token (this is all completely free!). Paste this token in the *ExcelAnalyzer.py* file as the default variable "HF_TOKEN".
+
 ### Advanced Features
 
 #### Model Configuration
